@@ -1,0 +1,286 @@
+/*==========================================================
+  PALETA DE COLORES Y FUENTES
+============================================================*/
+
+:root {
+    /* 60% Gris Oscuro/Azul - Fondo de secciones oscuras */
+    --principal: #323E4A; 
+
+    /* 30% Naranja Quemado - Títulos y énfasis */
+    --secundario: #E97B2C; 
+
+    /* 10% Azul Eléctrico - Botones, enlaces, detalles */
+    --acento: #4884B4;
+
+    /* Blanco Roto/Texto principal en fondos oscuros */
+    --texto: #F8FAFC; 
+
+    /* Gris Claro/Texto secundario en fondos oscuros */
+    --texto-sec: #CBD5E1; 
+
+    /* Gris muy oscuro para tarjetas/componentes */
+    --fondo-card: #2A3540; 
+    
+    /* Negro para texto en fondos claros */
+    --texto-oscuro: #000000; 
+}
+
+/* Importar Fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400&display=swap');
+
+/*==========================================================
+  ESTILOS GENERALES Y RESET
+============================================================*/
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: var(--fondo-card); 
+    color: var(--texto); /* Color de texto por defecto (blanco/claro) */
+    line-height: 1.6;
+    padding-top: 76px; /* Compensación para la navbar fija */
+    overflow-x: hidden; 
+}
+
+h1, h2, h3, .navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+/* Color de párrafo: Asegura que todos los párrafos sean blancos por defecto en fondos oscuros */
+p {
+    color: var(--texto); 
+}
+
+/*==========================================================
+  CLASES DE UTILIDAD (Para unificar la paleta con Bootstrap)
+============================================================*/
+
+.text-sec-color { color: var(--secundario) !important; }
+.text-acento-color { color: var(--acento) !important; }
+.bg-dark-blue { background-color: var(--principal) !important; }
+.bg-dark-custom { background-color: var(--principal) !important; } 
+.bg-card-color { background-color: var(--fondo-card) !important; } 
+.bg-acento { background-color: var(--acento) !important; } 
+.text-dark-custom { color: var(--principal) !important; } 
+
+
+
+/*==========================================================
+  1. NAVEGACIÓN (NAVBAR)
+============================================================*/
+
+.navbar {
+    transition: background-color 0.3s ease;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand h1 {
+    color: var(--secundario) !important;
+}
+
+/* Estilo para el logo dentro de la navbar */
+.navbar-logo {
+    height: 60px; 
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+    transform: scale(1.05);
+}
+
+.navbar-nav .nav-link {
+    color: var(--texto) !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--acento) !important;
+}
+
+.navbar-toggler {
+    border-color: var(--acento) !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(72, 132, 180, 0.5) !important; 
+}
+
+/*==========================================================
+  2. SECCIÓN HERO (HEADER)
+============================================================*/
+
+.header-img {
+    /* **ATENCIÓN: RUTA DE LA IMAGEN DE FONDO** */
+    background: url("/img/header.svg") no-repeat center center/cover !important;
+    min-height: 85vh; 
+    position: relative;
+    padding-top: 100px;
+}
+
+.header-img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+}
+
+.header-img > .container {
+    position: relative;
+    z-index: 2; 
+}
+
+.hero p.lead {
+    font-size: 1.75rem;
+    color: var(--texto-sec);
+    margin-top: 0.5rem;
+}
+
+.btn-primary.bg-acento {
+    background-color: var(--acento) !important;
+    border-color: var(--acento) !important;
+    font-weight: 700;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary.bg-acento:hover {
+    background-color: var(--secundario) !important; 
+    border-color: var(--secundario) !important;
+    transform: translateY(-2px); 
+}
+
+.animate__pulse.animate__infinite {
+    --animate-duration: 2s;
+}
+
+/*==========================================================
+  3. SECCIONES DE CONTENIDO
+============================================================*/
+
+section {
+    padding: 6rem 1rem; 
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--secundario);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+#sobre-mi, #contacto {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+}
+
+/* REGLA ELIMINADA: La clase .bg-white-custom ya maneja el color del texto del párrafo por herencia.
+#sobre-mi p,
+#contacto p,
+.bg-white-custom p {
+    color: var(--principal) !important; 
+}
+*/
+
+
+/*==========================================================
+  4. PROYECTOS (CARDS)
+============================================================*/
+
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--secundario); 
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-top: 0;
+    color: var(--acento);
+}
+
+/* Asegura el color del texto en las tarjetas de proyectos (fondo oscuro) */
+.card-text {
+    color: var(--texto-sec); 
+    min-height: 60px; 
+}
+
+.card .btn {
+    background-color: var(--secundario) !important;
+    border-color: var(--secundario) !important;
+}
+.card .btn:hover {
+    background-color: var(--acento) !important;
+    border-color: var(--acento) !important;
+}
+
+/*==========================================================
+  5. CONTACTO Y FOOTER
+============================================================*/
+
+#contacto a {
+    color: var(--acento);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#contacto a:hover {
+    color: var(--secundario);
+    text-decoration: underline;
+}
+
+footer {
+    border-top: 3px solid var(--secundario); 
+    color: var(--texto-sec);
+}
+
+/*==========================================================
+  6. RESPONSIVE DESIGN (Móviles)
+============================================================*/
+
+@media (max-width: 992px) {
+    body {
+        padding-top: 56px; 
+    }
+
+    .header-img {
+        min-height: 60vh;
+    }
+
+    .header-img > .container {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    .header-img h2 {
+        font-size: 2.5rem !important;
+    }
+    
+    section {
+        padding: 4rem 1rem;
+    }
+
+    .card {
+        margin: 0.5rem 0;
+    }
+}
